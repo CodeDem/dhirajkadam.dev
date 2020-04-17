@@ -4,7 +4,7 @@ import Query from "../query";
 import ReactMarkdown from "react-markdown";
 import Moment from "react-moment";
 import ARTICLE_QUERY from "../../apollo/queries/article/article";
-import Baselayout from '../../layout/BaseLayout'
+import Baselayout from '../../Layout/BaseLayout'
 import Prism from "prismjs";
 import { ArticleHeroImage } from './Article.style'
 
