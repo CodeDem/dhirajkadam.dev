@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { respondTo } from '../../theme/utils/_respondTo'
+import { respondTo } from '../../utils/_respondTo'
 
 export const ArticleHeroImage = styled.div`
     h1{

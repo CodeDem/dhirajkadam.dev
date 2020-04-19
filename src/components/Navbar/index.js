@@ -4,6 +4,7 @@ import {
   Logo,
   Social
 } from './Navbar.style'
+import { Link } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
@@ -11,7 +12,7 @@ const NavBar = () => {
   return (
     <Nav>
       <Logo>
-        <a><h1>Dhiraj Kadam</h1></a>
+        <Link to="/" ><h1>Dhiraj Kadam</h1></Link>
       </Logo>
 
       <Social>

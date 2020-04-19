@@ -3,11 +3,12 @@ import { Container } from './Base.style'
 import Navbar from '../../components/Navbar'
 const BaseLayout = (props) => {
   return (
-
-    <Container>
+    <React.Fragment>
       <Navbar />
-      {props.children}
-    </Container>
+      <Container>
+        {props.children}
+      </Container>
+    </React.Fragment>
   )
 }
 

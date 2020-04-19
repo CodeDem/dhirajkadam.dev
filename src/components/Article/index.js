@@ -1,49 +1,40 @@
-import React, { Component } from 'react'
-import { withRouter } from "next/router";
-import Query from "../query";
-import ReactMarkdown from "react-markdown";
+import React from 'react'
 import Moment from "react-moment";
-import ARTICLE_QUERY from "../../apollo/queries/article/article";
 import Baselayout from '../../Layout/BaseLayout'
-import Prism from "prismjs";
 import { ArticleHeroImage } from './Article.style'
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 
-class Article extends Component {
-  constructor(props) {
-    super(props)
-  }
-  componentDidMount() {
-    setTimeout(() => Prism.highlightAll(), 500)
+const Article = ({ article, path }) => {
+
+  const disqusConfig = {
+    url: `https://dhirajkadam.dev${path}`,
+    identifier: article.id,
+    title: article.title,
   }
 
-  render() {
-    return (
-      <Query query={ARTICLE_QUERY} id={this.props.id}>
-        {({ data: { article } }) => {
-          return (
-            <Baselayout>
-              <div>
-                <ArticleHeroImage
-                  src={process.env.BACKEND_URL + article.cover.url}
-                >
-                  <h1>{article.title}</h1>
-                </ArticleHeroImage>
+  return (
+    <Baselayout>
+      <div>
+        <ArticleHeroImage
+        // src={process.env.BACKEND_URL + article.cover.url}
+        >
+          <h1>{article.title}</h1>
+        </ArticleHeroImage>
 
-                <div className="uk-section">
-                  <div className="uk-container uk-container-small">
-                    <ReactMarkdown source={article.content} />
-                    <p>
-                      <Moment format="MMM Do YYYY">{article.published_at}</Moment>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Baselayout>
-          );
-        }}
-      </Query>
-    );
-  }
+        <div className="uk-section">
+          <div className="uk-container uk-container-small">
+            <div
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
+            <p>
+              <Moment format="MMM Do YYYY">{article.date}</Moment>
+            </p>
+          </div>
+        </div>
+      </div>
+      <CommentCount config={disqusConfig} placeholder={'...'} />
+      <Disqus config={disqusConfig} />
+    </Baselayout>
+  );
 }
-
-export default withRouter(Article)
+export default Article

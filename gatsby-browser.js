@@ -1,3 +1,4 @@
+import "./src/styles/prism.css"
 /**
  * Implement Gatsby's Browser APIs in this file.
  *

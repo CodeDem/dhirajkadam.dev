@@ -6,27 +6,27 @@ import {
   Divider,
   Title
 } from "./Card.style";
+import { Link } from 'gatsby'
 const Card = ({ article }) => {
   return (
     <CardContainer>
-      {/* <Link href={{ pathname: "article", query: { id: article.id } }}> */}
-      <a><Title>{article.title}</Title></a>
-      {/* </Link > */}
+      <Link to={article.slug}>
+        <Title>{article.title}</Title>
+      </Link >
       <Meta>
-        <a>
-          {article.category.name}
-        </a>
+        {
+          article.categories.map(category => <a>{category.name}</a>)
+        }
         <p>
           <Moment format="ddd MMM Do YYYY">
-            {article.published_at}
+            {article.date}
           </Moment>
         </p>
       </Meta>
-      <div>
-        <p>
-          {article.excerpt}
-        </p>
-      </div>
+      <div
+        dangerouslySetInnerHTML={{ __html: article.excerpt }}
+      />
+
       <Divider />
     </CardContainer>
 
