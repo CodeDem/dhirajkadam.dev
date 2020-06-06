@@ -1,4 +1,5 @@
 import "./src/styles/prism.css"
+import "@fortawesome/fontawesome-svg-core/styles.css"
 /**
  * Implement Gatsby's Browser APIs in this file.
  *
